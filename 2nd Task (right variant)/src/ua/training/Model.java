@@ -12,7 +12,11 @@ public class Model {
     /**
      * Secret value
      */
-    public int thoughtNumber;
+    private int thoughtNumber;
+    // Only for tests
+    public int getThoughtNumber() {
+        return thoughtNumber;
+    }
     /**
      * Values of interval
      */
@@ -71,7 +75,7 @@ public class Model {
         return result;
     }
 
-    private boolean isValueInInterval(int value) {
+    public boolean isValueInInterval(int value) {
         boolean result = true;
         if(value < minValue || value > maxValue){
             result = false;
