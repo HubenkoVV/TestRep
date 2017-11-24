@@ -17,7 +17,7 @@ public class Controller {
     }
 
     public void processUser(){
-        view.printArray(model.valuesToArray());
+        view.printArray(model.getValues().toArray());
         view.printMap(model.getCountedValues());
     }
 }

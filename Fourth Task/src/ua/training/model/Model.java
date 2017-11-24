@@ -41,17 +41,9 @@ public class Model {
 
     void initializeList(int size){
         Random random = new Random();
-        values = new MyArrayList<>();
+        values = new MyArrayList<>(size);
         for (int i = 0; i < size; i++) {
             values.add(new Integer(random.nextInt(10)));
         }
-    }
-
-    public Integer[] valuesToArray(){
-        Integer[] resultArr = new Integer[values.size()];
-        for (int i = 0; i < resultArr.length; i++){
-            resultArr[i] = values.get(i);
-        }
-        return resultArr;
     }
 }
