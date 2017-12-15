@@ -67,6 +67,7 @@ public class UserController {
                 .findFirst().get().getId();
         int numberOfQ = inputInt();
         inputQuestions(numberOfQ, idTest);
+        view.printMessageFromBundle(ADDED);
     }
 
     private void inputQuestions(int number, int id){
@@ -102,17 +103,18 @@ public class UserController {
         testService.getListOfElements().forEach(System.out::println);
         view.printMessageFromBundle(CHOOSE_TEST);
         int id = inputInt();
-        questionService.getListOfElements().stream()
+        view.printMessageFromBundle(SORTED);
+        questionService.getSortedList(scanner.next().equals("+"), jdbcDaoFactory).stream()
                 .filter(question -> question.getTestId() == id)
                 .forEach(question -> {
                     if (question.getAnswers().size() == 1) {
                         view.printMessageFromBundle(INPUT_ANSWER);
-                        view.printMessage(question.getText());
+                        view.printMessage(question.toString());
                         view.printMessage(String.valueOf(answerService.isRightAnswer
                                 (question.getAnswers().get(0).getId(), scanner.next())));
                     } else {
                         view.printMessageFromBundle(CHOOSE_ANSWER);
-                        view.printMessage(question.getText());
+                        view.printMessage(question.toString());
                         question.getAnswers().forEach(System.out::println);
                         view.printMessage(String.valueOf(answerService.isRightAnswer(inputInt())));
                     }

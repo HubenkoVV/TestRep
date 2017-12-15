@@ -57,8 +57,7 @@ public class Question {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + text.hashCode();
+        int result = 1;
         result = 31 * result + testId;
         result = 31 * result + complexity;
         return result;
