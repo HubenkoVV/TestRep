@@ -18,17 +18,19 @@ public class AnswerService extends GeneralService<Answer>{
         makeList();
     }
 
-    public boolean isRightAnswer(int id){
+    public boolean isRightAnswer(int idQuestion, int id){
         try {
-            return listOfElements.stream().filter(answer -> answer.getId() == id).findFirst().get().isRight();
+            Answer answer = getById(id);
+            return answer.getIdQuestion() == idQuestion && answer.isRight();
         } catch (NoSuchElementException nse){
             return false;
         }
     }
 
-    public boolean isRightAnswer(int id, String text){
+    public boolean isRightAnswer(int id, int idQuestion ,String text){
         try {
-            return listOfElements.stream().filter(answer -> answer.getId() == id).findFirst().get().getText().equals(text);
+            Answer answer = getById(id);
+            return answer.getIdQuestion() == idQuestion && answer.getText().equals(text);
         } catch (NoSuchElementException nse){
             return false;
         }

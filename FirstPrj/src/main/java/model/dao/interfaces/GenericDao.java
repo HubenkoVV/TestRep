@@ -1,4 +1,6 @@
 package model.dao.interfaces;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 import java.util.List;
 
 public interface GenericDao<T> extends AutoCloseable {

@@ -82,7 +82,7 @@ public class JDBCQuestionDao implements QuestionDao {
                     question.getAnswers().add(answerMapper.extractFromResultSet(rs));
                 test.getQuestions().add(question);
             }
-            questionSet.forEach(question-> questions.add(question));
+            questions.addAll(questionSet);
             ps.close();
             return questions;
         } catch (SQLException e) {

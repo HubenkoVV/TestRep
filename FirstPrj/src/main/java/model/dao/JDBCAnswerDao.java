@@ -41,7 +41,7 @@ public class JDBCAnswerDao implements AnswerDao {
     @Override
     public Answer findByID(int id) {
         try(PreparedStatement ps = connection.prepareStatement(
-                "select * from answer where id = ?")){
+                "select * from answer where idanswer = ?")){
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             rs.next();
