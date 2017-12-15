@@ -4,6 +4,7 @@ import model.dao.JDBCAnswerDao;
 import model.dao.interfaces.AnswerDao;
 import model.entity.Answer;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class AnswerService extends GeneralService<Answer>{
 
@@ -17,12 +18,22 @@ public class AnswerService extends GeneralService<Answer>{
         makeList();
     }
 
-    public boolean isRightAnswer(int id){
-        return listOfElements.stream().filter(answer -> answer.getId() == id).findFirst().get().isRight();
+    public boolean isRightAnswer(int idQuestion, int id){
+        try {
+            Answer answer = getById(id);
+            return answer.getIdQuestion() == idQuestion && answer.isRight();
+        } catch (NoSuchElementException nse){
+            return false;
+        }
     }
 
-    public boolean isRightAnswer(int id, String text){
-        return listOfElements.stream().filter(answer -> answer.getId() == id).findFirst().get().getText().equals(text);
+    public boolean isRightAnswer(int id, int idQuestion ,String text){
+        try {
+            Answer answer = getById(id);
+            return answer.getIdQuestion() == idQuestion && answer.getText().equals(text);
+        } catch (NoSuchElementException nse){
+            return false;
+        }
     }
 }
 
