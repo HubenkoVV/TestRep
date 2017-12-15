@@ -31,7 +31,7 @@ public class AnswerServiceTest {
     public void isRightAnswerTest() throws Exception {
         answerService.add("N",1,true);
         int id = answerService.getListOfElements().stream().filter(answer -> answer.getText().equals("N")).findFirst().get().getId();
-        Assert.assertTrue(answerService.isRightAnswer(id));
+        Assert.assertTrue(answerService.isRightAnswer(answerService.getListOfElements().get(id).getIdQuestion(),id));
         answerService.delete(id);
     }
 
@@ -39,7 +39,7 @@ public class AnswerServiceTest {
     public void isRightAnswer1Test() throws Exception {
         answerService.add("N",1,true);
         int id = answerService.getListOfElements().stream().filter(answer -> answer.getText().equals("N")).findFirst().get().getId();
-        Assert.assertTrue(answerService.isRightAnswer(id, "N"));
+        Assert.assertTrue(answerService.isRightAnswer(id, answerService.getListOfElements().get(id).getIdQuestion(), "N"));
         answerService.delete(id);
     }
 

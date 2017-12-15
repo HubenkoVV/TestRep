@@ -58,7 +58,7 @@ public class JDBCQuestionDao implements QuestionDao {
     public List<Question> findAll(boolean sorted){
         if(sorted)
             FIND_ALL = "select * from question left join test using(idtest) left join answer using(idquestion) " +
-                    "order by complexity where question.language = ?";
+                    "where question.language = ? order by complexity";
         else FIND_ALL = "select * from question left join test using(idtest) left join answer using(idquestion) " +
                     "where question.language = ?";
         return findAll();
@@ -82,7 +82,7 @@ public class JDBCQuestionDao implements QuestionDao {
                     question.getAnswers().add(answerMapper.extractFromResultSet(rs));
                 test.getQuestions().add(question);
             }
-            questionSet.forEach(question-> questions.add(question));
+            questions.addAll(questionSet);
             ps.close();
             return questions;
         } catch (SQLException e) {

@@ -1,7 +1,6 @@
 package view;
 
 public interface ViewConstants {
-    String CHOOSE_COUNTRY = "choose_country";
     String CHOOSE_ACT = "choose_act";
     String AVAILABLE_TESTS = "available_tests";
     String INPUT_NAME = "input_name";
@@ -16,4 +15,5 @@ public interface ViewConstants {
     String WRONG = "wrong_input";
     String ADDED = "added_test";
     String COMPLEXITY = "input_complexity";
+    String SORTED = "sorted";
 }

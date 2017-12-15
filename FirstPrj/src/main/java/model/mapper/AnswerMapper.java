@@ -11,8 +11,8 @@ public class AnswerMapper implements GeneralMapper<Answer> {
     public Answer extractFromResultSet(ResultSet rs) throws SQLException {
         return new Answer.AnswerBuilder()
                 .buildId(rs.getInt("idanswer"))
-                .buildIdQuestion(rs.getInt("idtest"))
                 .buildText(rs.getString("text_answer"))
+                .buildIdQuestion(rs.getInt("idquestion"))
                 .buildRight(rs.getBoolean("right_answer"))
                 .build();
     }

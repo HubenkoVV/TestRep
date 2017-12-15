@@ -58,7 +58,6 @@ public class Answer {
     public int hashCode() {
         int result = id;
         result = 31 * result + idQuestion;
-        result = 31 * result + text.hashCode();
         result = 31 * result + (right ? 1 : 0);
         return result;
     }

@@ -40,7 +40,6 @@ public class Test {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + topic.hashCode();
         return result;
     }
 
